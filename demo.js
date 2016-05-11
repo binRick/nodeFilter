@@ -6,7 +6,7 @@ var cli = require('./cli'),
     //   options = cli.parse();
 
     options = cli.parse({
-        action: ['a', 'An action to perform', 'action', 'list'],
+        output: ['o', 'Output format', 'string', 'debug'],
         type: ['t', 'Node Type', 'string', 'openvz'],
         node: ['n', 'Node', 'string', 'all'],
         work: [false, 'What kind of work to do', 'string', 'sleep'],
@@ -23,6 +23,25 @@ var lineFilter = function(line) {
     return L;
 };
 
+var createOutput = {
+    debug: function(Nodes) {
+        console.log(pj.render(Nodes));
+        console.log(options);
+    },
+    ip: function(Nodes) {
+        var o = Nodes.map(function(n) {
+            return n.ip;
+        }).join('\n');
+        console.log(o);
+    },
+    node: function(Nodes) {
+        var o = Nodes.map(function(n) {
+            return n.node;
+        }).join('\n');
+        console.log(o);
+    },
+};
+
 
 
 cli.withStdinLines(function(lines, newline) {
@@ -35,7 +54,7 @@ cli.withStdinLines(function(lines, newline) {
     }).map(lineFilter).filter(function(node) {
         return node.type == options.type;
     });
-    console.log(pj.render(Nodes));
-    console.log(options);
+    createOutput[options.output](Nodes);
+    //   console.log(pj.render(Nodes));
     //    this.output(lines.join(newline));
 });
