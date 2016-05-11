@@ -3,14 +3,10 @@
 var cli = require('./cli'),
     _ = require('underscore'),
     pj = require('prettyjson'),
-    //   options = cli.parse();
 
-    options = cli.parse({
-        output: ['o', 'Output format', 'string', 'debug'],
-        type: ['t', 'Node Type', 'string', 'openvz'],
-        node: ['n', 'Node', 'string', 'all'],
-        work: [false, 'What kind of work to do', 'string', 'sleep'],
-    });
+        options = require('./options');
+
+
 
 var lineFilter = function(line) {
     var t = line.split(' ');
