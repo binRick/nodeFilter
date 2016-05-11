@@ -3,10 +3,7 @@
 var cli = require('./cli'),
     _ = require('underscore'),
     pj = require('prettyjson'),
-
-        options = require('./options');
-
-
+    options = require('./options');
 
 var lineFilter = function(line) {
     var t = line.split(' ');
@@ -19,24 +16,7 @@ var lineFilter = function(line) {
     return L;
 };
 
-var createOutput = {
-    debug: function(Nodes) {
-        console.log(pj.render(Nodes));
-        console.log(options);
-    },
-    ip: function(Nodes) {
-        var o = Nodes.map(function(n) {
-            return n.ip;
-        }).join('\n');
-        console.log(o);
-    },
-    node: function(Nodes) {
-        var o = Nodes.map(function(n) {
-            return n.node;
-        }).join('\n');
-        console.log(o);
-    },
-};
+var createOutput = require('./outputs');
 
 
 
