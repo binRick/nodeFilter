@@ -7,4 +7,5 @@ module.exports = cli.parse({
     work: ['w', 'What kind of work to do', 'string', 'none'],
     filter: ['f', 'Apply Node Filter', 'string', 'up'],
     limit: ['l', 'Node Limit', 'int', 3],
+    collections: ['c', 'Comma Seperated Node Items to collect', 'string', ''],
 });
