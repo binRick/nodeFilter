@@ -6,4 +6,5 @@ module.exports = cli.parse({
     node: ['n', 'Node', 'string', 'all'],
     work: ['w', 'What kind of work to do', 'string', 'none'],
     filter: ['f', 'Apply Node Filter', 'string', 'up'],
+    limit: ['l', 'Node Limit', 'int', 3],
 });
