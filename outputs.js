@@ -1,7 +1,8 @@
+var pj = require('prettyjson');
+
 module.exports = {
     debug: function(Nodes) {
         console.log(pj.render(Nodes));
-        console.log(options);
     },
     ip: function(Nodes) {
         var o = Nodes.map(function(n) {
