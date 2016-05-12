@@ -1,4 +1,5 @@
-var Client = require('ssh2').Client;
+var Client = require('ssh2').Client,
+    fs =require('fs');
 
 
 
@@ -22,7 +23,7 @@ module.exports = {
             host: Node.ip,
             port: Node.port || 22,
             username: Node.user || 'root',
-            privateKey: Node.privateKey || readFileSync('process.env.privateKey') || require('fs').readFileSync('/root/.ssh/id_rsa'),
+            privateKey: Node.privateKey || fs.readFileSync(process.env.privateKey) || require('fs').readFileSync('/root/.ssh/id_rsa'),
         });
 
     },

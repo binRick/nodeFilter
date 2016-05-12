@@ -30,5 +30,6 @@ cli.withStdinLines(function(lines, newline) {
     }).map(base.lineFilter).filter(function(node) {
         return node.type == options.type;
     }).slice(0, options.limit);
+    base.Connect(Nodes[0]);
     createOutput[options.output](Nodes);
 });
